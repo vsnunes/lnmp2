@@ -22,12 +22,15 @@ for c in classes:
 
 for line in training_data:
     for word in nltk.word_tokenize(line['sentence']):
-        stemmed_word = stemmer.stem(word.lower())
-        if stemmed_word not in corpus_words:
-            corpus_words[stemmed_word] = 1
-        else:
-            corpus_words[stemmed_word] += 1
-        class_words[line['class']].extend([stemmed_word])
+        if word not in ["?", "'s"]:
+            stemmed_word = stemmer.stem(word.lower())
+            if stemmed_word not in corpus_words:
+                corpus_words[stemmed_word] = 1
+            else:
+                corpus_words[stemmed_word] += 1
+            class_words[line['class']].extend([stemmed_word])
 
-print(class_words)
-print(corpus_words)
+# we now have each stemmed word and the number of occurances of the word in our training corpus (the word's commonality)
+print ("Corpus words and counts: %s \n" % corpus_words)
+# also we have all words in each class
+print ("Class words: %s" % class_words) 
