@@ -1,0 +1,42 @@
+actor_name 	Which are the most relevant actors in Bad Boys? 
+character_name 	Which characters were there on Goldfinger? 
+character_name 	What characters can be seen in the movie Iron Man? 
+spoken_language	What are the languages that are spoken in Ocean's Eleven? 
+person_name 	Who was the famous director of The Great Gatsby? 
+actor_name 	Which are the most relevant actors in Great Gatsby? 
+character_name 	Which characters were there on Pirates of the Caribbean: On Stranger Tides? 
+character_name 	What characters can be seen in the movie Pirates of the Caribbean: On Stranger Tides? 
+spoken_language 	What are the languages that are spoken in Pirates of the Caribbean: On Stranger Tides? 
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Which are the most important guys acting in Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Which are the most important actors from Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Who are the most relevant actors in Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Which are the actors playing Pirates of the Caribbean: On Stranger Tides?
+character_name 	Which were the characters from Pirates of the Caribbean: On Stranger Tides?
+character_name 	What characters can be found in Pirates of the Caribbean: On Stranger Tides? 
+spoken_language	What are the languages spoken in Pirates of the Caribbean: On Stranger Tides?
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides?
+person_name 	Who was the director of Pirates of the Caribbean: On Stranger Tides?
+person_name 	Who directed the Pirates of the Caribbean: On Stranger Tides?
+actor_name 	Which are the most important actors from Pirates of the Caribbean: On Stranger Tides?
+actor_name 	Who are the most relevant actors in Pirates of the Caribbean: On Stranger Tides?
+actor_name 	Which are the actors playing Pirates of the Caribbean: On Stranger Tides?
+character_name 	Which were the characters from Pirates of the Caribbean: On Stranger Tides? 
+character_name 	What characters can be found in Pirates of the Caribbean: On Stranger Tides? 
+spoken_language	What are the languages in Pirates of the Caribbean: On Stranger Tides? 
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides? 
+person_name 	Who was the director of Pirates of the Caribbean: On Stranger Tides?
+person_name 	Who directed Pirates of the Caribbean: On Stranger Tides?
+actor_name 	Which are the main actors in The Hobbit: The Desolation of Smaug? 
+character_name 	Which are the main characters in The Hobbit: The Desolation of Smaug? 
+character_name 	What characters can there in the movie The Hobbit: The Desolation of Smaug? 
+spoken_language	Which languages are spoken in The Hobbit: The Desolation of Smaug? 
+person_name 	Who was the guy that directed The Hobbit: The Desolation of Smaug? 
+actor_name 	Which are the actors with the main role in The Hobbit: The Desolation of Smaug? 
+character_name 	Which are The Hobbit: The Desolation of Smaug characters? 
+spoken_language 	What are the languages in The Hobbit: The Desolation of Smaug? 
+person_name 	Who was the director, very famous, that directed The Hobbit: The Desolation of Smaug? 
+actor_name 	Which are the most important guys acting in The Hobbit: The Desolation of Smaug? 
+actor_name 	Which are the most relevant actors from The Hobbit: The Desolation of Smaug? 
+actor_name 	Who are the actors playing in The Hobbit: The Desolation of Smaug?
+character_name 	What are the names of the main characters from The Hobbit: The Desolation of Smaug
