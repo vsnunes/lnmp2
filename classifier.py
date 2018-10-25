@@ -70,14 +70,27 @@ print("NaiveBayesClassifier (nltk) accuracy percent:",(nltk.classify.accuracy(cl
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import ComplementNB, MultinomialNB,BernoulliNB
 
+testing_blind = []
+for el in testing_set:
+    testing_blind.append(el[0])
+
 MNB_classifier = SklearnClassifier(MultinomialNB())
 MNB_classifier.train(training_set)
-print("MultinomialNB accuracy percent:",nltk.classify.accuracy(MNB_classifier, testing_set))
+print("MultinomialNB accuracy percent:",nltk.classify.accuracy(MNB_classifier, testing_set)*100)
+print("*** TAGS: ****")
+for el in testing_blind:
+    print(MNB_classifier.classify(el))
 
 BNB_classifier = SklearnClassifier(BernoulliNB())
 BNB_classifier.train(training_set)
-print("BernoulliNB accuracy percent:",nltk.classify.accuracy(BNB_classifier, testing_set))
+print("BernoulliNB accuracy percent:",nltk.classify.accuracy(BNB_classifier, testing_set)*100)
+print("*** TAGS: ****")
+for el in testing_blind:
+    print(BNB_classifier.classify(el))
 
 CNB_classifier = SklearnClassifier(ComplementNB())
 CNB_classifier.train(training_set)
-print("ComplementNB accuracy percent:",nltk.classify.accuracy(CNB_classifier, testing_set))
+print("ComplementNB accuracy percent:",nltk.classify.accuracy(CNB_classifier, testing_set)*100)
+print("*** TAGS: ****")
+for el in testing_blind:
+    print(CNB_classifier.classify(el))
