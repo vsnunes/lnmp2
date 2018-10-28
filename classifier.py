@@ -1,8 +1,13 @@
 import nltk
 import numpy
+import random
+from nltk.stem.lancaster import LancasterStemmer
 from nltk.classify.scikitlearn import SklearnClassifier
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.naive_bayes import ComplementNB, MultinomialNB,BernoulliNB
+from nltk.corpus import stopwords
+
+nltk.download('stopwords')
 
 training_data = []
 corpus_words = []
@@ -21,12 +26,16 @@ def processTrainFile(fileName):
     class_words = []
     corpus_words_freq = []
         
+    stemmer = LancasterStemmer()
+    
     for category in categories:
         words=[]
         for line in training_data:
             for word in nltk.word_tokenize(line['sentence']):
-                if word not in ('?', ':', '.', ',' "'s"):
-                    corpus_words.append(word.lower())
+                
+                # if the word is one of the stopwords (generic phrase articulators) ignore it
+                if (word not in ('?', ':', '.', ',' "'s")) and (word not in stopwords.words('english')):
+                    corpus_words.append(stemmer.stem(word))
                     if line['category'] == category:
                         words.append(word.lower())
         class_words.append((words, category))
@@ -68,10 +77,10 @@ def NME(output, input):
 def find_features(txt, word_features):
     words = set(txt)
     features = {}
-    #for w in word_features:
-        #features[w] = (w in words)
-    for word in words:
-        features[word] = 1
+    for w in word_features:
+        features[w] = (w in words)
+    #for word in words:
+    #    features[word] = 1
     
     return features
 
@@ -80,35 +89,24 @@ def featuresets(class_words, word_features):
 
 # Tokenizes a phrase
 def tokenizePhrase(phrase):
-    words=[]
+    stemmer = LancasterStemmer()
+    tokenizedWords=[]
     for word in nltk.word_tokenize(phrase):
-        if word not in ('?', ':', '.', ',' "'s"):
-            words.append(word.lower())
-    return words
+        # if the word is one of the stopwords (generic phrase articulators) ignore it
+        if (word not in ('?', ':', '.', ',' "'s")) and (word not in stopwords.words('english')):
+            tokenizedWords.append(stemmer.stem(word))
+    return tokenizedWords
 
 #Auxiliar method just to return the phrase to specific
 #tokenized dictionary
 def parseToPredictor(phrase):
     tokens = tokenizePhrase(phrase)
-    tuple_list = []
-
-    for token in tokens:
-        tuple_list.append(token)
-
-    return [find_features(word, corpus_words) for word in tuple_list]
+    return find_features(tokens, corpus_words)
 
 def predictor(classifier, phrase):
-    fs = parseToPredictor(phrase)
+    d_fs = parseToPredictor(phrase)
     
-    stats = {}
-    for word in fs:
-        tag = classifier.classify(word)
-        if tag not in stats.keys():
-            stats[tag] = 1
-        else:
-            stats[tag] += 1
-
-    return stats
+    return classifier.classify(d_fs)
 
 
 def merge(tagFile, questionFile):
