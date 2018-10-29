@@ -13,8 +13,20 @@ training_data = []
 corpus_words = []
 categories = []
 
-#processamento do ficheiro de treino
 def processTrainFile(fileName):
+    """Given a fileName with category and questions, parse them for previous classifier training.
+
+    Args:
+        fileName: The file name where the phrases are stored.
+        Example of file struct:
+            category_name1 [TAB] question1
+            category_name2 [TAB] question2
+                        ...
+
+    Returns:
+        !!
+
+    """
 
     with open(fileName) as corpus:
         for line in corpus:
@@ -44,7 +56,7 @@ def processTrainFile(fileName):
 
     word_features = list(corpus_words_freq.keys())
 
-    fs = featuresets(class_words, word_features)
+    fs = lexeme_metric_training(class_words, word_features)
 
     return fs
 
@@ -74,37 +86,89 @@ def NME(output, input):
     print(distance)
     return distance[n - 1, m - 1]
 
-def find_features(txt, word_features):
-    words = set(txt)
-    features = {}
-    for w in word_features:
-        features[w] = (w in words)
+def lexeme_metric(lexemes_list, corpus_list):
+    """Assign weight to UNCATEGORIZED lexemes based on some metric.
+
+    Args:
+        lexiemes_list: A list of lexemes to assign a weight.
+        corpus_list: A list of all lexemes seen on training phrases.
+
+    Returns:
+        A dictionary containing the lexemes and a corresponding weight.
+        Example: {'lexieme1': val1, 'lexieme2': val2, ... }
+    """
+
+    words = set(lexemes_list)
+    metrics = {}
+    for w in corpus_list:
+        metrics[w] = (w in words)
     #for word in words:
     #    features[word] = 1
     
-    return features
+    return metrics
 
-def featuresets(class_words, word_features):
-    return [(find_features(rev, word_features), category) for (rev, category) in class_words]
+def lexeme_metric_training(categorized_lexemes_list, corpus_list):
+    """Assign weight to CATEGORIZED lexemes based on some metric.
 
-# Tokenizes a phrase
-def tokenizePhrase(phrase):
+    Note: This function is very similiar to lexeme_metric. The difference relies on knowing the category of the lexemes.
+
+    Args:
+        categorized_lexemes_list: A list of tuples containing the lexeme and correponding category.
+        Example: [ ('lexeme1', 'category1') , ('lexeme2', 'category2'),  ... ]
+
+        corpus_list: A list of all lexemes seen on training phrases.
+
+    Returns:
+        A list of dictionaries containing the lexemes and theirs corresponding weights.
+        Example: [{'lexieme1': val1, 'lexieme2': val2, ... }, ... ]
+    """
+    return [(lexeme_metric(lexeme, corpus_list), category) for (lexeme, category) in categorized_lexemes_list]
+
+def tokenizePhrase(question):
+    """Given a question, stem the words into lexemes ignoring stopwords (of, the, etc...)
+
+    Args:
+        question: A string corresponding to the question to stem.
+
+    Returns:
+        A list of lexemes.
+        Example question: "What is my name?"
+        Example returned list: ['what', 'nam']
+    """
+
     stemmer = LancasterStemmer()
     tokenizedWords=[]
-    for word in nltk.word_tokenize(phrase):
-        # if the word is one of the stopwords (generic phrase articulators) ignore it
+    for word in nltk.word_tokenize(question):
+        # if the word is one of the stopwords (generic question articulators) ignore it
         if (word not in ('?', ':', '.', ',' "'s")) and (word not in stopwords.words('english')):
             tokenizedWords.append(stemmer.stem(word))
     return tokenizedWords
 
-#Auxiliar method just to return the phrase to specific
-#tokenized dictionary
-def parseToPredictor(phrase):
-    tokens = tokenizePhrase(phrase)
-    return find_features(tokens, corpus_words)
+def parseToPredictor(question):
+    """Given a question prepare them to the classifier, which means, tokenize and assign weights to the lexemes.
 
-def predictor(classifier, phrase):
-    d_fs = parseToPredictor(phrase)
+    Args:
+        question: A string corresponding to the question we want to predict the category.
+
+    Returns:
+        A dictionary containing the lexemes and a corresponding weight.
+    """
+    tokens = tokenizePhrase(question)
+    return lexeme_metric(tokens, corpus_words)
+
+def predictor(classifier, question):
+    """Given a question related to some movie, predicts it's category.
+
+    Args:
+        classifier: An instance of sklearn.SklearnClassifier object
+        question: A string corresponding to the question we want to predict the category.
+
+    Returns:
+        A string corresponding to the predicted category name.
+        Example (question): "Which is the most relevant actor in some movie?"
+        Example (return)  : actor_name
+    """
+    d_fs = parseToPredictor(question)
     
     return classifier.classify(d_fs)
 
