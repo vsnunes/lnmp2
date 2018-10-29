@@ -37,7 +37,7 @@ def processTrainFile(fileName):
                 if (word not in ('?', ':', '.', ',' "'s")) and (word not in stopwords.words('english')):
                     corpus_words.append(stemmer.stem(word))
                     if line['category'] == category:
-                        words.append(word.lower())
+                        words.append(stemmer.stem(word))
         class_words.append((words, category))
 
     corpus_words_freq = nltk.FreqDist(corpus_words)
