@@ -172,7 +172,7 @@ def predictor(classifier, question):
     
     return classifier.classify(d_fs)
 
-
+#deprecated function: to be removed!
 def merge(tagFile, questionFile):
     tF = open(tagFile, "r")
     qF = open(questionFile, "r")
@@ -201,11 +201,43 @@ CNB_classifier = SklearnClassifier(ComplementNB())
 CNB_classifier.train(training_set)
 #print("ComplementNB accuracy percent:",nltk.classify.accuracy(CNB_classifier, testing_set)*100)
 
+def displayStats(classifiers_list, print_predicted=False):
+    """Given several classifiers, display accuracy for each.
 
-testing_set = []
-#Opening testing file
-with open("corpora/TESTING.txt") as testing:
-        for line in testing:
-            print(predictor(MNB_classifier, line))
+    Args:
+        classifiers_list: A list of tuples containing (string of classifiers name, classifier object)
+        Example: [("classifier_name1", classifier), ...]
 
-    
+        print_predicted: When True displays the predicted category. When omitted is False.
+    """
+
+    for classifier in classifiers_list:
+        testing_questions = []
+        testing_results = []
+        testing_results_solution = []
+        #Opening testing file
+        with open("corpora/NovasQuestoes.txt") as testing:
+                for line in testing:
+                    testing_questions.append(line.rstrip())
+                    predicted_category = predictor(classifier[1], line.rstrip())
+                    testing_results.append(predicted_category)
+                    if (print_predicted):
+                        print(predicted_category)
+
+        # Load the file with the answers and calc the accuracy
+        with open("corpora/NovasQuestoesResultados.txt") as corpus:
+            i = 0
+            for line in corpus:
+                category = line.rstrip()
+                testing_results_solution.append(category)
+                i += 1
+
+        number_of_questions = len(testing_questions)
+        number_of_correct_q = len(set(testing_results).intersection(testing_results_solution))
+        print("")
+        print("## ACCURACY ##")
+        print("{} #Correct ({}) #Total ({})   %Accuracy ({} %): ".format(classifier[0], number_of_correct_q, number_of_questions, (number_of_correct_q / number_of_questions) * 100))
+
+classifiers_list = [("MNB_classifier", MNB_classifier), ("BNB_classifier", BNB_classifier), ("CNB_classifier", CNB_classifier)]
+
+displayStats(classifiers_list)
