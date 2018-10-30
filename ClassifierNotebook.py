@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
+# In[49]:
 
 
 #http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
@@ -169,7 +169,7 @@ predicted = text_clf.predict(testing_questions_list)
 np.mean(predicted == testing_solutions_list)
 
 
-# In[24]:
+# In[45]:
 
 
 text_clf = Pipeline([('vect', CountVectorizer()),
@@ -182,6 +182,95 @@ text_clf.fit(questions_list, categories_training_solutions)
 
 predicted = text_clf.predict(testing_questions_list)
 np.mean(predicted == testing_solutions_list)
+
+
+# In[58]:
+
+
+from sklearn.feature_extraction.text import HashingVectorizer
+text_clf = Pipeline([('vect', HashingVectorizer(analyzer='word')),
+                     ('tfidf', TfidfTransformer()),
+                     ('clf', SGDClassifier(loss='epsilon_insensitive', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=5, tol=None)),
+])
+text_clf.fit(questions_list, categories_training_solutions)  
+
+predicted = text_clf.predict(testing_questions_list)
+np.mean(predicted == testing_solutions_list)
+
+
+# In[54]:
+
+
+manual_test = ["How long does Regateiro teaches?"]
+text_clf.predict(manual_test)[0]
+
+
+# In[ ]:
+
+
+
+
+
+# In[55]:
+
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+#CLASSIFIERS TEST
+classifiers = []
+classifiers.append(("KNeighborsClassifier", KNeighborsClassifier(3)))
+classifiers.append(("SVC linear", SVC(kernel="linear", C=0.025)))
+classifiers.append(("SVC gamma", SVC(gamma=2, C=1)))
+classifiers.append(("DecisionTreeClassifier", DecisionTreeClassifier()))
+classifiers.append(("RandomForestClassifier", RandomForestClassifier()))
+
+
+for (name, classifier) in classifiers:
+    text_clf2 = Pipeline([('vect', CountVectorizer()),
+                         ('tfidf', TfidfTransformer()),
+                         ('clf', classifier),])
+    text_clf2.fit(questions_list, categories_training_solutions)  
+
+    predicted = text_clf2.predict(testing_questions_list)
+    print("{}: {}".format(name, np.mean(predicted == testing_solutions_list)))
+
+
+# In[19]:
+
+
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import SGDRegressor
+#CLASSIFIERS TEST for SGD
+classifiers = []
+classifiers.append(("EI l2", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=5, tol=None)))
+classifiers.append(("EI l1", SGDClassifier(loss='epsilon_insensitive', penalty='l1',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=5, tol=None)))
+classifiers.append(("EI learningrate", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=5, tol=None, learning_rate="invscaling", eta0=6)))
+classifiers.append(("EI constant", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=5, tol=None, learning_rate="constant", eta0=2)))
+
+
+for (name, classifier) in classifiers:
+    text_clf2 = Pipeline([('vect', CountVectorizer()),
+                         ('tfidf', TfidfTransformer()),
+                         ('clf', classifier),])
+    text_clf2.fit(questions_list, categories_training_solutions)  
+
+    predicted = text_clf2.predict(testing_questions_list)
+    print("{}: {}".format(name, np.mean(predicted == testing_solutions_list)))
 
 
 # In[ ]:
