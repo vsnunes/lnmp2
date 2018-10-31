@@ -2,7 +2,7 @@
 # coding: utf-8
 
 # In[49]:
-
+import nltk
 
 #http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html
 
@@ -18,27 +18,6 @@ with open("corpora/QuestoesConhecidas.txt") as corpus:
 
 # In[3]:
 
-
-from nltk.stem.lancaster import LancasterStemmer
-def tokenizePhrase(question):
-    """Given a question, stem the words into lexemes ignoring stopwords (of, the, etc...)
-
-    Args:
-        question: A string corresponding to the question to stem.
-
-    Returns:
-        A list of lexemes.
-        Example question: "What is my name?"
-        Example returned list: ['what', 'nam']
-    """
-
-    stemmer = LancasterStemmer()
-    tokenizedWords=[]
-    for word in nltk.word_tokenize(question):
-        # if the word is one of the stopwords (generic question articulators) ignore it
-        if (word not in ('?', ':', '.', ',' "'s")) and (word not in stopwords.words('english')):
-            tokenizedWords.append(stemmer.stem(word))
-    return tokenizedWords
 
 
 # In[4]:
@@ -97,14 +76,6 @@ X_new_tfidf = tfidf_transformer.transform(X_new_counts)
 
 predicted = clf.predict(X_new_tfidf)
 predicted
-
-
-# In[10]:
-
-
-from nltk.corpus import stopwords
-tokenizePhrase("What is my role in this project?")
-
 
 # In[11]:
 
@@ -199,56 +170,26 @@ text_clf.fit(questions_list, categories_training_solutions)
 predicted = text_clf.predict(testing_questions_list)
 np.mean(predicted == testing_solutions_list)
 
-
-# In[54]:
-
-
-manual_test = ["How long does Regateiro teaches?"]
-text_clf.predict(manual_test)[0]
-
-
-# In[ ]:
-
-
-
-
-
-# In[55]:
-
-
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
-#CLASSIFIERS TEST
-classifiers = []
-classifiers.append(("KNeighborsClassifier", KNeighborsClassifier(3)))
-classifiers.append(("SVC linear", SVC(kernel="linear", C=0.025)))
-classifiers.append(("SVC gamma", SVC(gamma=2, C=1)))
-classifiers.append(("DecisionTreeClassifier", DecisionTreeClassifier()))
-classifiers.append(("RandomForestClassifier", RandomForestClassifier()))
-
-
-for (name, classifier) in classifiers:
-    text_clf2 = Pipeline([('vect', CountVectorizer()),
-                         ('tfidf', TfidfTransformer()),
-                         ('clf', classifier),])
-    text_clf2.fit(questions_list, categories_training_solutions)  
-
-    predicted = text_clf2.predict(testing_questions_list)
-    print("{}: {}".format(name, np.mean(predicted == testing_solutions_list)))
-
-
 # In[19]:
 
-
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import SGDRegressor
 #CLASSIFIERS TEST for SGD
 classifiers = []
+classifiers.append(("EI hinge", SGDClassifier(loss='hinge', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=1000, tol=None)))
+classifiers.append(("EI log", SGDClassifier(loss='log', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=10, tol=None)))
+classifiers.append(("EI modified_huber", SGDClassifier(loss='modified_huber', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=10, tol=None)))
+classifiers.append(("EI squared_hinge", SGDClassifier(loss='squared_hinge', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=10, tol=None)))
+classifiers.append(("EI perceptron", SGDClassifier(loss='perceptron', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=10, tol=None)))
 classifiers.append(("EI l2", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
                                            alpha=1e-3, random_state=42,
                                            max_iter=5, tol=None)))
@@ -258,13 +199,16 @@ classifiers.append(("EI l1", SGDClassifier(loss='epsilon_insensitive', penalty='
 classifiers.append(("EI learningrate", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
                                            alpha=1e-3, random_state=42,
                                            max_iter=5, tol=None, learning_rate="invscaling", eta0=6)))
+classifiers.append(("EI HEHEHE", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
+                                           alpha=1e-3, random_state=42,
+                                           max_iter=10, tol=None, learning_rate="invscaling", eta0=6)))
 classifiers.append(("EI constant", SGDClassifier(loss='epsilon_insensitive', penalty='l2',
                                            alpha=1e-3, random_state=42,
                                            max_iter=5, tol=None, learning_rate="constant", eta0=2)))
 
 
 for (name, classifier) in classifiers:
-    text_clf2 = Pipeline([('vect', CountVectorizer()),
+    text_clf2 = Pipeline([('vect', CountVectorizer(analyzer='word')),
                          ('tfidf', TfidfTransformer()),
                          ('clf', classifier),])
     text_clf2.fit(questions_list, categories_training_solutions)  

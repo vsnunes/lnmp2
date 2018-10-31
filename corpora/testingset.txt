@@ -1,0 +1,75 @@
+actor_name 	Who has played the part of James Bond in Spectre? 
+character_name 	Which were the characters from Pirates of the Caribbean: On Stranger Tides?
+original_title 	In average, what's the best rated movie? 
+actor_name 	Which actors participated in Training Day along side Denzel Washington? 
+original_title 	What was the least profitable movie ever? 
+release_date 	In which year was Some Like It Hot produced? 
+production_country 	In which countries was Transformers shot? 
+character_name 	Which are The Hobbit: The Desolation of Smaug characters? 
+production_company 	How many companies produced Quantum of Solace? 
+original_title 	Movie that made the least profit? 
+actor_name 	Which are the actors with the main role in The Hobbit: The Desolation of Smaug? 
+actor_name 	Who are the actors playing in The Hobbit: The Desolation of Smaug?
+spoken_language 	On the movie Quantum of Solace, how many idioms can be heard? 
+original_title 	In how many movies did Michael Fassbender play a part in? 
+original_title 	Meryl Streep has participated in how many movies? 
+original_title 	What is the most recent movie to be released? 
+original_title 	Tell me what's the movie with the lowest rating. 
+production_country 	King Kong was shot in how many countries? 
+actor_name 	How many actors played a role in Avatar? 
+original_title 	In which movies did Scarlett Johansson take part in? 
+character_name 	In total, how many characters are there in Spectre? 
+original_title 	Tell me how many movies were directed by Christopher Nolan. 
+original_title 	In which movies did Angelina Jolie enter? 
+spoken_language 	How many languages can be heard in The Tourist? 
+character_name 	What are the names of the main characters from The Hobbit: The Desolation of Smaug
+vote_avg 	What was the rating given to the movie Capote? 
+original_title 	Mr. T entered which movies? 
+actor_name 	Who acted with Julia Roberts in Pretty Woman? 
+release_date 	San Andreas was released in what month? 
+actor_name 	Who starred in Batman Begins? 
+actor_name 	Who voiced Papa Smurf in the movie The Smurfs? 
+original_title 	What is the best rated movie? 
+release_date 	Release date of Inside Out? 
+original_title 	In what movies did George Clooney take part as director? 
+original_title 	Tell me what is the latest movie to be released. 
+keyword 	What are the most relevant words of Casino Royale? 
+actor_name 	Which are the most relevant actors in Great Gatsby? 
+original_title 	What was Steven Spielberg's first movie? 
+person_name 	Who was Inception's director? 
+original_title 	How many movies were directed by Mel Gibson? 
+actor_name 	Which are the most important actors from Pirates of the Caribbean: On Stranger Tides?
+original_title 	Which movie had the worst vote average? 
+genre 	Tell me the genres of Avatar. 
+genre 	The movie Grease belongs to which genres? 
+actor_name 	Which are the most important guys acting in Pirates of the Caribbean: On Stranger Tides? 
+original_title 	What was the first movie to be released? 
+person_name 	Who was the director of Pirates of the Caribbean: On Stranger Tides?
+actor_name 	Number of actors in Iron Man 2? 
+character_name 	Show me the character count of Titanic. 
+actor_name 	Which are the most important actors from Pirates of the Caribbean: On Stranger Tides? 
+character_name 	How many characters entered the movie Cloud Atlas? 
+actor_name 	Which are the most relevant actors from The Hobbit: The Desolation of Smaug? 
+spoken_language	What are the languages that are spoken in Ocean's Eleven? 
+original_title 	Morgan Freeman participated in how many movies during his career? 
+release_date 	What is the release date of The Imitation Game? 
+revenue 	What was the box office made by Terminator Genisys? 
+original_title 	In what movies does Johnny Depp appear? 
+character_name 	What characters can be seen in Iron Man? 
+production_company 	The movie Fight Club was produced by how many companies? 
+production_country 	Where was The Ninth Gate shot? 
+actor_name 	What are the most relevant actors in Bad Boys? 
+runtime 	How long does San Andreas last? 
+actor_name 	What actor played Frodo in The Lord of the Rings: The Fellowship of the Ring? 
+character_name 	What characters can there in the movie The Hobbit: The Desolation of Smaug? 
+keyword 	What are the keywords for the movie Warcraft? 
+original_title 	Which movie was most recently released? 
+character_name 	What characters entered in Ben-Hur? 
+spoken_language 	Which tongues can be heard in The Italian Job? 
+character_name 	What were the parts played in the movie Joan of Arc? 
+production_company 	Which companies produced Jurassic Park? 
+original_title 	Which movie has the longest run-time? 
+original_title 	What was the first movie in which Tom Hanks starred in? 
+original_title 	Which movie made the most revenue? 
+release_date 	The debut of The Matrix occured in what month? 
+character_name 	Which characters were there on Goldfinger? 

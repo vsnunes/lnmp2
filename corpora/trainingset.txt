@@ -1,0 +1,175 @@
+production_company 	How many companies were involved in the production of Despicable Me? 
+production_country 	In what countries was Lara Croft: Tomb Raider produced? 
+original_title 	Which movies were directed by Ridley Scott? 
+original_title 	What movie received the best vote average? 
+character_name 	Tell me the role played by Angelina Jolie in The Tourist. 
+original_title 	Movie with longest run time? 
+actor_name 	What actors played a part in Toy Story 2? 
+release_date 	From what year is The Incredibles? 
+runtime 	What is the lenght of the movie Australia? 
+runtime 	What is the running time of Rush Hour 3? 
+character_name 	What characters can be found in Pirates of the Caribbean: On Stranger Tides? 
+production_company 	The production of The Jungle Book involved how many companies? 
+person_name 	Who was the guy that directed The Hobbit: The Desolation of Smaug? 
+vote_avg 	From 0 to 10, what was the average vote given to Braveheart? 
+original_title 	What was the movie that received the worst review ever? 
+person_name 	Who was the director of Pirates of the Caribbean: On Stranger Tides?
+original_title 	Robert Zemeckis started directing in which movie? 
+spoken_language 	During the movie The Matrix, what languages are spoken? 
+character_name 	What characters can be seen in the movie Iron Man? 
+actor_name 	What's the number of actors involved in the making of Braveheart? 
+original_title 	In how many movies did Matt Damon enter? 
+character_name 	Which characters were there on Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Which are the most important guys acting in The Hobbit: The Desolation of Smaug? 
+original_title 	How many movies did Steven Spielberg direct? 
+actor_name 	How many actors participated in Cars? 
+budget 	How much budget did Valkyrie have? 
+original_language 	What is the main language used in the movie Wanted? 
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides? 
+production_country 	The movie The Tourist was produced in how many countries? 
+original_title 	Tom Hanks took part in which movies? 
+revenue 	How much profit did The Matrix Reloaded generate? 
+original_title 	What's the title of the oldest movie? 
+overview 	What's the overview of the movie Star Trek? 
+character_name 	What was the character that Sam Worthington played in Avatar? 
+release_date 	Tell me what month was when Casino Royale made its debut. 
+original_language 	Which idiom was most used on The Tourist? 
+actor_name 	What are the actors that participated with Johnny Depp in Pirates of the Caribbean: On Stranger Tides? 
+original_title 	What is the most recent movie where Christopher Walken can be seen? 
+original_title 	What is the oldest movie ever made? 
+original_title 	What's the movie that lasts the longest? 
+vote_avg 	In average, what was the rating given to the movie Alexander? 
+original_title 	Out of all movies produced, what is the one with the worst rating? 
+actor_name 	What actors starred in Ocean's Eleven? 
+original_title 	What movies did John Woo direct? 
+keyword 	What are the keywords of Finding Nemo? 
+original_title 	With which movie did Angelina Jolie start her acting career? 
+character_name 	What role did George Clooney play in Gravity? 
+person_name 	Who directed Pirates of the Caribbean: On Stranger Tides?
+production_company 	Which companies produced Independence Day? 
+release_date 	In what year did Star Wars come out? 
+original_title 	What is the latest movie featuring Tom Hanks? 
+vote_avg 	What was the rating of Inception? 
+original_title 	What was the first movie directed by Luc Besson? 
+person_name 	Who directed the Pirates of the Caribbean: On Stranger Tides?
+budget 	Money spent on The Matrix? 
+original_title 	From all the movies made, what's the shortest one? 
+runtime 	What is the running time of Into the Storm? 
+person_name 	Who directed Transformers: Age of Extinction? 
+production_country 	The production of Inglourious Basterds was made in how many countries? 
+production_country 	What's the number of countries where The Matrix was produced in? 
+character_name 	The movie The Avengers has how many characters? 
+original_title 	Russell Crowe has participated in how many movies? 
+production_company 	What were the companies that produced Divergent? 
+original_title 	Show me the longest movie on record. 
+original_title 	Which movie was given the best rating? 
+spoken_language 	What languages can be heard in American Sniper? 
+person_name 	Who was the director of Braveheart? 
+original_title 	What is the movie lasts the least? 
+keyword 	Tell me the keywords of Divergent. 
+original_title 	With which movie did Al Pacino start his acting career? 
+original_language 	What is the most used language in Star Trek? 
+character_name 	What was the part played in Inception by Leonardo DiCaprio? 
+budget 	What was the budget of Furious 7? 
+spoken_language 	How many different languages are spoken in Inglourious Basterds? 
+original_title 	What was the first movie to be directed by Clint Eastwood? 
+original_title 	What is the oldest movie produced? 
+person_name 	Which director directed Avatar? 
+spoken_language	What are the languages spoken in Pirates of the Caribbean: On Stranger Tides?
+original_title 	What was the movie that generated the largest box office? 
+person_name 	Who was the director, very famous, that directed The Hobbit: The Desolation of Smaug? 
+person_name 	Who was the director of The Great Gatsby? 
+release_date 	What year did the movie Casablanca debut? 
+original_title 	How many movies has George Lucas directed? 
+budget 	What was American Gangster's budget? 
+overview 	Tell me the overview of Suicide Squad. 
+person_name 	Show me the director of Toy Story. 
+character_name 	What was the role taken by Brad Pitt in the movie Ocean's Eleven? 
+production_country 	In which country was Lost in Translation shot? 
+original_title 	Which movie generated the least income? 
+production_company 	What movie companies produced the movie The Hunger Games? 
+person_name 	Who was the famous director of The Great Gatsby? 
+original_title 	What movies has Guillermo del Toro directed? 
+spoken_language 	What are the languages spoken in Ocean's Eleven? 
+original_title 	What movies did Christopher Nolan direct? 
+production_company 	Paycheck was produced by how many companies? 
+spoken_language 	What's the number of spoken languages in American Sniper? 
+actor_name 	Which are the main actors in The Hobbit: The Desolation of Smaug? 
+original_title 	Most recent movie to feature Daniel Craig? 
+release_date 	When was Mad Max 2 released? 
+spoken_language 	During the movie The Da Vinci Code, how many languages are used? 
+genre 	To which genres does the movie Pulp Fiction belong? 
+original_title 	What movie made the smallest box office? 
+original_title 	What is the longest movie ever made? 
+budget 	Toy Story 2 had how much budget? 
+original_title 	What was the movie produced the longest time ago? 
+spoken_language 	What are the languages that are spoken in Pirates of the Caribbean: On Stranger Tides? 
+spoken_language 	What are the languages used in Cars 2? 
+actor_name 	Who acted with Frank Langella in The Ninth Gate? 
+character_name 	What characters can be found in Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	What actor played the role of Jake Sully in Avatar? 
+release_date 	On what month was The Avengers released? 
+character_name 	Which characters were there on Goldfinger? 
+original_title 	Which movie has the shortest run time? 
+runtime 	What is the run time of The Matrix? 
+original_title 	What is the last movie in which Tom Cruise appears in? 
+original_title 	During his career, how many movies did Michael Bay direct? 
+actor_name 	Who acted with Anthony Hopkins in The Silence of the Lambs? 
+character_name 	How many characters were in total in The Matrix Revolutions? 
+original_title 	In average, what movie has received the worst votes? 
+release_date 	When was the debut of Shutter Island? 
+spoken_language	What are the languages in Pirates of the Caribbean: On Stranger Tides? 
+original_title 	What was the movie that generated the largest profit? 
+original_title 	Which movies were made by Stanley Kubrick? 
+original_title 	What is the shortest movie ever released? 
+original_title 	Throught his career, which movies has Steven Spielberg directed? 
+runtime 	How long is the movie Million Dollar Baby? 
+genre 	What are the genres of the movie Notting Hill? 
+actor_name 	Which are the actors playing Pirates of the Caribbean: On Stranger Tides?
+revenue 	What was the revenue of Rocky Balboa? 
+spoken_language 	What are the languages in The Hobbit: The Desolation of Smaug? 
+original_title 	What was the first movie ever to have Brad Pitt? 
+original_title 	Tom Hanks started his directing career with what movie? 
+character_name 	What was the role played by Tim Allen in Toy Story 3? 
+original_title 	What was the latest movie to debut? 
+original_language 	What is the original language spoken in Das Leben der Anderen? 
+actor_name 	What actor played the part of Jake Sully in Avatar? 
+keyword 	Keywords of Cloud Atlas. 
+spoken_language	Which languages are spoken in The Hobbit: The Desolation of Smaug? 
+release_date 	In which year was The Island produced? 
+release_date 	When did the The Matrix Reloaded come out on cinemas? 
+revenue 	How much money was made with the movie Madagascar? 
+production_country 	Where was The Passion of the Christ produced? 
+actor_name 	Who are the most relevant actors in Pirates of the Caribbean: On Stranger Tides?
+original_title 	What was the most profitable movie of all time? 
+actor_name 	Who are the most relevant actors in Pirates of the Caribbean: On Stranger Tides? 
+original_title 	What is the latest movie in which Adam Sandler enters? 
+original_title 	Most recent movie to premier in cinemas? 
+original_title 	Tell me the title of shortest movie ever released. 
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides? 
+overview 	What is the overview of Gothika? 
+character_name 	Which were the characters from Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	The production of Interstellar involved how many actors? 
+original_title 	Of all the movies made, what was the one that generated the smallest revenue? 
+original_language 	What is the main language in Rush Hour 2? 
+original_title 	What was the most profitable movie ever made? 
+actor_name 	Who played the part of Woody in Toy Story? 
+actor_name 	Which are the actors playing Pirates of the Caribbean: On Stranger Tides?
+character_name 	What were the characters in The Lego Movie? 
+production_company 	What companies were responsible for the production of the movie Hellboy? 
+character_name 	Which are the main characters in The Hobbit: The Desolation of Smaug? 
+vote_avg 	What was the vote average of Batman Rises? 
+production_country 	In how many countries was 2012 shot? 
+person_name 	Spectre was directed by who? 
+release_date 	In what month did Hamlet make its debut? 
+overview 	Overview of Avatar. 
+person_name 	Who was the famous director of Pirates of the Caribbean: On Stranger Tides?
+actor_name 	What actors entered Titanic? 
+genre 	What kind of movie is A.I. Artificial Intelligence? 
+original_title 	What was the first movie to feature George Clooney? 
+character_name 	What characters can be seen in the movie Pirates of the Caribbean: On Stranger Tides? 
+actor_name 	Who entered the movie The Matrix? 
+revenue 	What was the profit made by the movie Scream 2? 
+original_title 	Which movie has the highest rating? 
+overview 	Give me the overview of Eragon. 
+actor_name 	Which are the most relevant actors in Bad Boys? 

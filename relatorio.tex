@@ -1,0 +1,138 @@
+%***************************************************
+%* Língua Natural
+%* Mini-Projeto 2 - Grupo 7
+%***************************************************
+\documentclass[12pt]{article}
+    \usepackage[utf8]{inputenc}
+    \usepackage{indentfirst}
+    \usepackage{graphicx}
+    \usepackage{hyperref}
+    \usepackage[labelfont=bf]{caption}
+    \renewcommand{\familydefault}{\sfdefault}
+    \renewcommand{\refname}{Referências}
+    
+    \usepackage[letterpaper, portrait, margin=3cm]{geometry}
+    
+    \begin{document}
+    \title{\vspace{-3cm}Língua Natural}
+    \author{Grupo 7 - Relatório do Mini-Projeto 2}
+    \date{}
+    
+    \maketitle
+    83567 - Tiago Gonçalves
+    
+    83576 - Vítor Nunes
+    
+    \section*{Introdução}
+    O projecto consiste na classifição, atribuição de categorias, de questões sobre cinema. É fornecido a um classificador um set de questões 
+    com categorias previamente conhecidas e depois é possível colocar novas questões e o mesmo atribuir a categoria da mesma.  
+    \section*{Proposta de Solução}
+    A primeira abordagem consistiu em utilizar a biblioteca nltk \footnote{Disponível em http://www.nltk.org/} para realizar:
+    \begin{itemize}
+        \item{\textit{Parsing}: ler as questões conhecidas do ficheiro e criar uma estrutura de dados compatível com o classificador.}
+        \item{\textit{Tokenizing}: separar as palavras da frase e, posteriormente, utilizar os lemas.}
+        \item{\textit{Stemming}: ignorar palavras que aparecem em todas as frases e não são relevantes. Articuladores e pronomes, designados de \textit{stop words}.}
+        \item{Naive Bayes: os classificadores utilizados foram baseados em Naive Bayes}
+    \end{itemize}
+    A métrica utilizada, para atribuir pesos a determinados lemas, correponde a atribuir um valor boleano (\textsc{True} ou \textsc{False}) consoante
+    o novo lema já foi observado anteriormente ou não.
+
+    Numa segunda abordagem, após realizada uma pesquisa e análise de um tutorial \cite{sklearn_tutorial}, decidiu-se utilizar:
+    \begin{itemize}
+        \item{\textit{Parsing} e \textit{Tokenizing}: \textsc{CountVectorizer}, que constroi uma matriz com contagens dos tokens, isto é, a frequência com que aparecem nas frases de treino.}
+    \end{itemize}
+
+    \section*{Resultados experimentais}
+    A primeira abordagem revelou os seguintes dados:
+    \begin{center}
+        \begin{tabular}{ l | r }
+          \hline
+          \textbf{Classificador} & \textbf{\textit{Accuracy}} \\ \hline
+          Multinomial Naive Bayes & $\approx 9.5238\%$ \\ \hline
+          Bernoli Naive Bayes & $\approx2.3810\%$ \\ \hline
+          Complement Naive Bayes & $\approx 9.5238\%$ \\
+          \hline
+        \end{tabular}
+      \end{center}
+      \captionof{table}{\textit{Accuracy} usando Naive Bayes sobre o ficheiro NovasQuestoes.txt \newline}
+
+    Os resultados não foram bons, isto porque os algoritmos Naive Bayes utilizam a definição de
+    probabilidade condicionada para determinar a probabilidade de dois lemas aparecerem seguidos.
+    Porém o que se pretende é classificar frases em categorias específicas portanto foi necessário
+    seguir outra abordagem. \newline
+
+    A segunda abordagem, usando a biblioteca \textsc{sklearn} revelou os seguintes dados:
+    \begin{center}
+        \begin{tabular}{ l | l | r }
+          \hline
+          \textbf{Classificador} & \textbf{Kernel} & \textbf{\textit{Accuracy}} \\ \hline
+          SGD\footnote{Stochastic Gradient Descent} & $hinge$ & $\approx 92,8571\%$ \\ \hline
+          SGD & $log$ & $\approx 80,9524\%$ \\ \hline
+          SGD & $modified_huber$ & $\approx 61,9048\%$ \\ \hline
+          SGD & $squared_hinge$ & $\approx 73,8095\%$ \\ \hline
+          SGD & $perceptron$ & $\approx 73,8095\%$ \\ \hline
+          SGD & $epsilon\_insensitive-l2$ & $\approx 95,2381\%$ \\ \hline
+          SGD & $epsilon\_insensitive-l1$ & $\approx 78,5714\%$ \\ \hline
+          SGD & $epsilon\_insensitive-l2-invscalling$ & $\approx 88,0952\%$ \\ \hline
+          SGD & $epsilon\_insensitive-l2-constant$ & $\approx 78,5714\%$ \\ \hline
+          KNeighbors & $K = 3$ & $\approx 83,3333\%$ \\ \hline
+          SVC & $linear$ & $\approx 00,0000\%$ \\ \hline
+          DecisionTree & $ $ & $\approx 90,4762\%$ \\ \hline
+          RandomForest & $ $ & $\approx 78,5714\%$ \\ \hline
+          
+          
+        \end{tabular}
+      \end{center}
+      \captionof{table}{Comparação de vários classificadores usando o ficheiro de teste NovasQuestoes.txt \newline}
+      
+    O SGD ($epsilon\_insensitive$) apresentou o melhor resultado, porém após realizar mais testes, mudando
+    o training set e o \textit{testing set}, obtemos melhor resultados usando o SGD ($hinge$).
+    Observámos também, que o nível de falha reside em categorias que sejam bastante próximas. Por exemplo, 
+    detetámos alguns erros em distinguir a categoria \textit{budget} da categoria \textit{revenue}. \newline
+
+
+    \section*{Conclusão e trabalho futuro}
+    Por forma a resolver erros em categorias próximas, uma possível solução seria criar uma lista de palavras
+    mais comuns por categoria por forma a aperfeiçoar o critério.
+
+    Conclui-se então, que não existe nenhum classificador pré-determinado, isto é, o classificador deve ser obtido
+    à custa de testes com casos reais.
+
+
+    \begin{thebibliography}{9}
+
+        \bibitem{chatbot}
+          \href{https://chatbotslife.com/text-classification-using-algorithms-e4d50dcba45}{Text Classification using Algorithms - chatbot}
+        
+        \bibitem{chatbot_howitworks}
+        dk\_,
+        \href{https://medium.com/@gk_/how-chat-bots-work-dfff656a35e2}{Soul of the Machine: How Chatbots Work}
+
+        \bibitem{nltk_tutorial}
+        PythonProgramming.net,
+        \href{https://pythonprogramming.net/text-classification-nltk-tutorial/}{Text Classification with NLTK}
+
+        \bibitem{nltk_probability}
+        nltk.org
+        \href{http://www.nltk.org/howto/probability.html}{Probability in NLTK}
+
+        \bibitem{nb_class}
+        Syed Sadat Nazrul,
+        \href{https://towardsdatascience.com/multinomial-naive-bayes-classifier-for-text-analysis-python-8dd6825ece67}{Multinomial Naive Bayes Classifier for Text Analysis}
+        
+        \bibitem{nb_explained}
+        Olli Huang,
+        \href{https://syncedreview.com/2017/07/17/applying-multinomial-naive-bayes-to-nlp-problems-a-practical-explanation/}{Applying Multinomial Naive Bayes to NLP Problems: A Practical Explanation}
+
+        \bibitem{sklearn}
+        scikit-learn.org,
+        \href{http://scikit-learn.org/stable/modules/naive_bayes.html}{1.9. Naive Bayes}
+
+        \bibitem{sklearn_tutorial}
+        scikit-learn.org,
+        \href{http://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html}{Working With Text Data}
+
+        \end{thebibliography}
+    \end{document}
+    
+    
