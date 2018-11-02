@@ -35,16 +35,18 @@ A primeira abordagem consistiu em utilizar a biblioteca nltk \footnote{Disponív
     \item{\textit{Parsing}: ler as questões conhecidas do ficheiro e criar uma estrutura de dados compatível com o classificador.}
     \item{\textit{Tokenizing}: separar as palavras da frase e, posteriormente, utilizar os lemas.}
     \item{\textit{Stemming}: ignorar palavras que aparecem em todas as frases e não são relevantes. Articuladores e pronomes, designados de \textit{stop words}.}
-    \item{Naive Bayes: os classificadores utilizados foram baseados em Naive Bayes}
+    \item{Naive Bayes: os classificadores utilizados foram baseados em Naive Bayes, que fazem uso da definição de probabilidade condicionada entre lemas.}
 \end{itemize}
 
 A métrica utilizada, para atribuir pesos a determinados lemas, correponde a atribuir um valor boleano (\textsc{True} ou \textsc{False}) consoante
-o novo lema já foi observado anteriormente ou não.
+tenha sido observado anteriormente ou não.
 
 Numa segunda abordagem, após realizada uma pesquisa e análise de um tutorial \cite{sklearn_tutorial}, decidiu-se utilizar:
 
 \begin{itemize}
     \item{\textit{Parsing} e \textit{Tokenizing}: \textsc{CountVectorizer}, que constroi uma matriz com contagens dos tokens, isto é, a frequência com que aparecem nas frases de treino.}
+    \item{TF-IDF\footnote{Term-Frequency Times Inverse Document-Frequency}: permite retirar importância às palavras mais comuns entre categorias.}
+    \item{SGD \footnote{Stochastic Gradient Descent}: é um classificador baseado em \textit{SGD Supervised Learning}. Foi o escolhido por apresentar melhores taxas de \textit{accuracy} como se pode constatar na \textbf{Tabela 2}.}
 \end{itemize}
 
 \break
@@ -65,7 +67,7 @@ A primeira abordagem revelou os seguintes dados:
 
 Os resultados não foram bons, isto porque os algoritmos Naive Bayes utilizam a definição de probabilidade condicionada para determinar a probabilidade de dois lemas aparecerem seguidos.
 
-Porém o que se pretende é classificar frases em categorias específicas portanto foi necessário seguir outra abordagem. \newline
+Porém, o que se pretende é classificar frases em categorias específicas logo foi necessário seguir outra abordagem. \newline
 
 A segunda abordagem, usando a biblioteca \textsc{sklearn} revelou os seguintes dados:
 
@@ -73,7 +75,7 @@ A segunda abordagem, usando a biblioteca \textsc{sklearn} revelou os seguintes d
     \begin{tabular}{ l | l | r }
       \hline
       \textbf{Classificador} & \textbf{Kernel} & \textbf{\textit{Accuracy}} \\ \hline
-      SGD\footnote{Stochastic Gradient Descent} & $hinge$ & $\approx 92,8571\%$ \\ \hline
+      SGD & $hinge$ & $\approx 92,8571\%$ \\ \hline
       SGD & $log$ & $\approx 80,9524\%$ \\ \hline
       SGD & $modified_huber$ & $\approx 61,9048\%$ \\ \hline
       SGD & $squared_hinge$ & $\approx 73,8095\%$ \\ \hline
@@ -93,10 +95,20 @@ A segunda abordagem, usando a biblioteca \textsc{sklearn} revelou os seguintes d
   \textbf{Tabela 2:} Comparação de vários classificadores usando o ficheiro de teste NovasQuestoes.txt \newline
 
   O SGD ($epsilon\_insensitive$) apresentou o melhor resultado, porém após realizar mais testes, mudando
-o training set e o \textit{testing set}, obtemos melhor resultados usando o SGD ($hinge$).
+o \textit{training set} e o \textit{testing set}, obtemos melhor resultados usando o SGD ($hinge$).
 Observámos também, que o nível de falha reside em categorias que sejam bastante próximas. Por exemplo, 
 detetámos alguns erros em distinguir a categoria \textit{budget} da categoria \textit{revenue}. \newline
 
+Decidimos realizar mais testes para despistar eventuais padrões nos ficheiros de teste. Criou-se um \textit{script}
+(\textsc{corpus.sh}) onde juntámos as perguntas e respostas de treino e de teste.
+O \textit{script} separa, aleatoriamente, as frases da seguinte forma:
+\begin{itemize}
+  \item{$70\% (175)$ número de questões de treino}
+  \item{$30\% (75)$ número de questões de teste}
+\end{itemize}
+
+Com base nos resultados apresentados pelo \textit{script} concluimos que o classificador com mais taxa de \textit{accuracy}
+em casos gerais foi o SGD ($hinge$) ainda que o $epsilon\_insensitive$ apresente na \textbf{Tabela 2} melhores resultados.
 
 \section*{Conclusão e trabalho futuro}
 
